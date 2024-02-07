@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #4CAF50, #64B5F6); /* Gradient background */
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            /*flex-direction: column;*/ /* Updated for vertical alignment */
+            background: url('static/images/f2.png') no-repeat center center fixed; 
+            background-size: cover;
+            flex-direction: column;
+        }
+
+        .restaurant-info {
+            margin-bottom: 20px;
+            text-align: center;
+            color: white; /* Adjust text color for better visibility on the background */
+        }
+
+        .restaurant-logo {
+            max-width: 100px; /* Adjust the size of the logo */
+            margin-bottom: 10px;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Add style for header and footer */
+        header, footer {
+            text-align: center;
+            /*background-color: #333;*/ /* Add a background color for better visibility */
+            color: white; /* Text color for better visibility on the background */
+            padding: 1px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="restaurant-info">
+            <img class="restaurant-logo" src="static/images/logo.png" alt="Restaurant Logo">
+            <h1>SnapServe Registration Page</h1>
+            <p>Welcome to our registration page!</p>
+        </div>
+    </header>
+    <form method="POST" action="/register">
+        <h1>Register</h1>
+        <label for="username">Username:</label>
+        <input type="text" name="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" required>
+
+        <input type="submit" value="Register">
+    </form>
+    <footer>
+        <!-- Your footer content goes here -->
+        <p>&copy; 2024 SnapServe. All rights reserved.</p>
+    </footer>
+</body>
+</html>

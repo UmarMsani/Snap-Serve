@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #343a40;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .cart-container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .home-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        .cart {
+            margin-bottom: 20px;
+        }
+
+        .cart-item {
+            border-bottom: 1px solid #dee2e6;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .cart-item img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .item-details {
+            flex-grow: 1;
+        }
+
+        .remove-btn {
+            background-color: #dc3545;
+            color: #fff;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .add-to-cart-btn {
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .cart-total {
+            text-align: center;
+        }
+
+        .checkout-btn {
+            background-color: #ffc107;
+            color: #343a40;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="cart-container">
+    <a href="/" class="home-button">Home</a>
+    <h1>Shopping Cart</h1>
+
+    <div class="cart" id="cart">
+        <!-- Cart items will be dynamically added here -->
+    </div>
+
+    <button class="add-to-cart-btn" onclick="addToCart()">Add to Cart</button>
+
+    <div class="cart-total">
+        <p>Total: $<span id="totalAmount">0.00</span></p>
+        <button class="checkout-btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
+    </div>
+</div>
+
+<!-- JavaScript for updating the cart and checking user login status -->
+<script>
+    // Sample data for demonstration purposes
+    const sampleItems = [
+        { id: 1, name: 'Product 1', price: 19.99 },
+        // Add more items as needed
+    ];
+
+    // Function to add items to the cart
+    function addToCart() {
+        // Check if the user is logged in
+        const isLoggedIn = checkUserLoginStatus();
+
+        if (isLoggedIn) {
+            // User is logged in, add items to the cart
+            const cart = document.getElementById('cart');
+            const totalAmount = document.getElementById('totalAmount');
+
+            let total = parseFloat(totalAmount.textContent);
+
+            sampleItems.forEach(item => {
+                // Simulate adding item to the cart
+                total += item.price;
+
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('cart-item');
+
+                itemDiv.innerHTML = `
+                    <img src="product_image.jpg" alt="${item.name}">
+                    <div class="item-details">
+                        <h3>${item.name}</h3>
+                        <p>Price: $${item.price.toFixed(2)}</p>
+                        <button class="remove-btn" onclick="removeItem(${item.id})">Remove</button>
+                    </div>
+                `;
+
+                cart.appendChild(itemDiv);
+            });
+
+            totalAmount.textContent = total.toFixed(2);
+        } else {
+            // User is not logged in, redirect to signup page
+            alert('Please sign up to add items to the cart.');
+            // Replace 'signup.html' with the actual signup page URL
+            window.location.href = 'signup.html';
+        }
+    }
+
+    // Function to check user login status (Replace with actual login check logic)
+    function checkUserLoginStatus() {
+        // Simulating login check, replace with your actual logic
+        return confirm('Are you logged in?');
+    }
+
+    // Rest of your existing JavaScript code
+</script>
+
+</body>
+</html>
